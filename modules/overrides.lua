@@ -319,6 +319,13 @@ end
 local currentTargetGUID
 LUF.overrides["Target"] = {}
 LUF.overrides["Target"].PostUpdate = function(self, event)
+	-- Force update all tags when target changes
+	-- Tags are not part of oUF's element system, so UpdateAllElements doesn't update them
+	-- We need to explicitly call UpdateTags on target change
+	if self.UpdateTags then
+		self:UpdateTags()
+	end
+	
 	if currentTargetGUID ~= UnitGUID("target") and LUF.db.profile.units.target.sound then
 		currentTargetGUID = UnitGUID("target")
 		if currentTargetGUID then
