@@ -35,15 +35,20 @@ jobs:
           # Extract addon version
           ADDON_VERSION=$(grep -E "^## Version:" LunaUnitFrames.toc | sed 's/## Version: *//')
           
-          # Create tag name: v{addon_version}-{interface}
-          TAG_NAME="v${ADDON_VERSION}-${INTERFACE}"
+          # Get short commit hash
+          COMMIT_SHORT=$(git rev-parse --short HEAD)
+          
+          # Create tag name: v{addon_version}-ui{interface}-{commit_short}
+          TAG_NAME="v${ADDON_VERSION}-ui${INTERFACE}-${COMMIT_SHORT}"
           
           echo "interface=${INTERFACE}" >> $GITHUB_OUTPUT
           echo "addon_version=${ADDON_VERSION}" >> $GITHUB_OUTPUT
+          echo "commit_short=${COMMIT_SHORT}" >> $GITHUB_OUTPUT
           echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
           
           echo "Interface: ${INTERFACE}"
           echo "Addon Version: ${ADDON_VERSION}"
+          echo "Commit: ${COMMIT_SHORT}"
           echo "Tag Name: ${TAG_NAME}"
 
       - name: Check if tag exists
