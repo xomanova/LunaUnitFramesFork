@@ -1,4 +1,4 @@
-## Interface: 11403
+## Interface: 11508
 ## Title: Luna Unit Frames
 ## Notes: 
 ## Author: Aviana
@@ -48,7 +48,6 @@ libs\oUF\elements\raidroleindicator.lua
 libs\oUF\elements\raidtargetindicator.lua
 libs\oUF\elements\range.lua
 libs\oUF\elements\readycheckindicator.lua
-libs\oUF\elements\resurrectindicator.lua
 libs\oUF\elements\totems.lua
 
 libs\oUF_Plugins\oUF_Plugins.xml
